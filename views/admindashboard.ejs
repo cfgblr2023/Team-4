@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <body>
+
+    <style>
+      body {
+
+        color: rgb(19, 19, 19);
+
+      }
+      </style>
+
+    <div class="content">
+      <h2 >lessons</h2>
+
+      <% if(content.length> 0) { %> 
+        <% content.forEach(element=> { %>
+
+
+        <h3 class="title" style="color: darkred;"><%= element.title %></h3>
+        <h4 class="subject" style="color: darkred;"><%= element.subject %></h3>
+        <h4 class="class" style="color: darkred;"><%= element.cyear %></h3>
+        <p class="bodysnippet"><%= element.cbody %></p>
+          <br>
+      
+        <% }); %> 
+      <% } else {%>
+        <p>No content to display</p>
+      <% } %>
+      
+    </div>
+
+  </body>
+</html>

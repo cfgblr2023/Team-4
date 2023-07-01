@@ -1,0 +1,22 @@
+const mongoose = require('mongoose');
+
+const contentSchema = new mongoose.Schema({
+    subject: {
+        type: String,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    cyear: {
+        type: String,
+        required: true,
+    },
+    cbody: {
+        type: String,
+        default: undefined
+    }
+});
+
+module.exports = mongoose.model('Content', contentSchema);

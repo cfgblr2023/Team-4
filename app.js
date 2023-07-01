@@ -10,6 +10,7 @@ const app = express();
 const Item = require('./models/Item');
 // Passport Config
 require('./config/passport')(passport);
+const Content = require('./models/Content')
 
 // DB Config
 const db = require('./config/keys').mongoURI;

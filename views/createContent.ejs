@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Panel</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    
+    .custom-card {
+      background-color: lightblue;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .custom-card h1 {
+      color: white;
+    }
+    
+    .form-group label {
+      color: white;
+      font-weight: bold;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="file"] {
+      background-color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 8px;
+      width: 100%;
+    }
+    
+    .btn-success {
+      background-color: lightblue;
+      border: none;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+      display: block;
+      font-size: 16px;
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+    }
+    
+    .btn-success:hover {
+      background-color: #8abde1;
+    }
+    
+    .lead a {
+      color: lightblue;
+    }
+    
+    .table {
+      margin-top: 20px;
+    }
+    
+    .table th,
+    .table td {
+      vertical-align: middle;
+    }
+    
+    .table thead {
+      background-color: lightblue;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="text-center mb-3">
+    <h1 class="mt-4">Welcome to the Admin Panel</h1>
+    <p class="lead mb-3">Welcome <%= user.name %><br><%= user.email %></p>
+    <a href="/users/logout" class="btn btn-secondary">Logout</a>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body custom-card">
+        <% include('./partials/messages.ejs') %>
+        <form action="/admin/items" enctype="multipart/form-data" method="POST">
+          <div class="form-group">
+            <label for="name">Item Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Item Name"
+              value="<%= typeof name !== 'undefined' ? name : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="price">Item Price</label>
+            <input type="number" id="price" name="price" class="form-control" placeholder="Enter Item Price"
+              value="<%= typeof price !== 'undefined' ? price : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="reqStock">Quantity</label>
+            <input type="number" id="reqStock" name="reqStock" class="form-control" placeholder="Enter Item Quantity"
+              value="<%= typeof reqStock !== 'undefined' ? reqStock : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="image">Enter Item Image</label>
+            <input type="file" id="image" name="image" class="form-control" placeholder="Enter Item Image" />
+          </div>
+          <button type="submit" class="btn btn-success btn-block">
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped table-primary">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Item Price</th>
+        <th>Quantity Available</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (allItems.length > 0) { %>
+        <% allItems.forEach(function(row) { %>
+          <tr>
+            <td><%= row.name %></td>
+            <td><%= row.price %></td>
+            <td><%= row.reqStock %></td>
+            <td>
+              <img src="<%= row.imgUrl %>" width="300" height="200">
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="4">No Record Found</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+
+</html>
