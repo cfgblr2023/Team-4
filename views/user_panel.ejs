@@ -1,41 +1,29 @@
-<h1 class="mt-4">Welome to user panel</h1>
-<p class="lead mb-3">Welcome <%= user.name %>
-        <%= user.email %>
-</p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<table class="table table-striped tabel-primary">
-        <thead>
-                <th>Item Name</th>
-                <th>Item Price</th>
-                <th>Quantity Available</th>
-                <th>Description</th>
-                <th>Buy Item</th>
-        </thead>
-        <tbody>
-                <%if (allItems.length>0){ %>
-                        <% allItems.forEach(function(row){ %>
-                                <tr>
-                                        <td>
-                                                <%= row.name %>
-                                        </td>
-                                        <td>
-                                                <%= row.price %>
-                                        </td>
-                                        <td>
-                                                <%= row.reqStock %>
-                                        </td>
-                                        <td>
-                                                <img src="<%= row.imgUrl%>" width="300" height="200">
-                                        </td>
-                                        <td>
-                                                <button class="btn btn-primary">Add to Cart</button>
-                                        </td>
-                                </tr>
-                                <% })}else{ %>
-                                        <tr>
-                                                <td colspan="6">No Record Found</td>
+<h1 class="mt-4" style="color: teal;">Welcome to User Panel</h1>
+<p class="lead mb-3">Welcome <%= user.name %> <%= user.email %></p>
+<a href="/users/logout" class="btn btn-secondary" style="background-color: teal;">Logout</a>
 
-                                        </tr>
-                                        <% } %>
-        </tbody>
-</table>
+<div class="row mt-5">
+  <% if (allItems.length > 0) { %>
+    <% allItems.forEach(function(row) { %>
+      <div class="col-md-6 mb-4">
+        <div class="card" style="background-color: teal; color: white;">
+          <div class="card-body">
+            <h5 class="card-title"><%= row.name %></h5>
+            <p class="card-text">Price: <%= row.price %></p>
+            <p class="card-text">Quantity Available: <%= row.reqStock %></p>
+            <img src="<%= row.imgUrl %>" class="card-img-top" alt="<%= row.name %>">
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <div class="col-md-12">
+      <div class="card" style="background-color: teal; color: white;">
+        <div class="card-body">
+          <p class="card-text">No Record Found</p>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>

@@ -1,3 +1,73 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.name %> <%= user.email %></p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard</title>
+  <style>
+    body {
+      background-color: teal;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      margin-top: 0;
+      font-size: 32px;
+      font-weight: bold;
+      color: teal;
+    }
+    
+    .lead {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: teal;
+    }
+    
+    .btn {
+      background-color: teal;
+      border: none;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 16px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-secondary {
+      background-color: #444;
+    }
+    
+    .btn:hover {
+      background-color: #008080;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="mt-4">Dashboard</h1>
+    <p class="lead mb-3">Welcome <%= user.name %> <%= user.email %></p>
+    <a href="/users/logout" class="btn btn-secondary">Logout</a>
+  </div>
+</body>
+
+</html>
