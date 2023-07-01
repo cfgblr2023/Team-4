@@ -100,13 +100,6 @@ router.post('/login', (req, res, next) => {
             failureFlash: true
             })(req, res, next);
         }
-        else if (user.role == 'org') {
-            passport.authenticate('local', {
-            successRedirect: '/org_panel',
-            failureRedirect: '/users/login',
-            failureFlash: true
-            })(req, res, next);
-        }
     })
     // passport.authenticate('local', {
     //     successRedirect: '/dashboard',
