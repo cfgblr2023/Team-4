@@ -10,9 +10,8 @@ const itemSchema = new mongoose.Schema({
         required: true
     },
     reqStock: {
-        type: Number,
+        type: String,
         required: true,
-        default: 0
     },
     imgUrl: {
         type: String,

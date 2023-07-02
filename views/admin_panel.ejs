@@ -79,32 +79,32 @@
     <a href="/users/logout" class="btn btn-secondary">Logout</a>
   </div>
 
-  <div class="row mt-5">
+  <div class="row mt-5 auto">
     <div class="col-md-6 m-auto">
-      <div class="card card-body custom-card">
+      <div class="card card-body custom-card auto">
         <% include('./partials/messages.ejs') %>
         <form action="/admin/items" enctype="multipart/form-data" method="POST">
           <div class="form-group">
             <label for="name">Course name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Item Name"
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Course name"
               value="<%= typeof name !== 'undefined' ? name : '' %>" />
           </div>
           <div class="form-group">
-            <label for="price">no. of lessons</label>
-            <input type="number" id="price" name="price" class="form-control" placeholder="Enter Item Price"
+            <label for="price">class</label>
+            <input type="number" id="price" name="price" class="form-control" placeholder="Enter class"
               value="<%= typeof price !== 'undefined' ? price : '' %>" />
           </div>
           <div class="form-group">
-            <label for="reqStock">class</label>
-            <input type="number" id="reqStock" name="reqStock" class="form-control" placeholder="Enter Item Quantity"
+            <label for="reqStock">content</label>
+            <input type="textarea" id="reqStock" name="reqStock" class="form-control" rows="4" cols="50" placeholder="content"
               value="<%= typeof reqStock !== 'undefined' ? reqStock : '' %>" />
           </div>
           <div class="form-group">
-            <label for="image">content</label>
-            <input type="file" id="image" name="image" class="form-control" placeholder="Enter Item Image" />
+            <label for="image">media</label>
+            <input type="file" id="image" name="image" class="form-control" placeholder="upload Image" />
           </div>
           <button type="submit" class="btn btn-success btn-block">
-            Register
+            Upload
           </button>
         </form>
       </div>
@@ -115,9 +115,9 @@
     <thead>
       <tr>
         <th>course</th>
-        <th>no. of lessons</th>
         <th>class</th>
-        <th>Description</th>
+        <th>content</th>
+        <th>media</th>
       </tr>
     </thead>
     <tbody>

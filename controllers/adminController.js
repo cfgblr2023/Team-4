@@ -55,7 +55,7 @@ module.exports.newItem = async (req, resp) => {
     newItem.imgPubId = imgUploadRes.public_id;
     newItem.save();
     console.log (newItem.imgUrl);
-    resp.send(await Item.findById(newItem._id));
+    resp.redirect('/admin_panel');
 }
 
 module.exports.delItem = async (req, resp) => {
@@ -67,7 +67,7 @@ module.exports.delItem = async (req, resp) => {
         await cloudinary.uploader.destroy(item.imgPubId);
     }
     await Item.findByIdAndDelete(req.params.id);
-    resp.render("/admin/items");
+    resp.render("/admin");
 }
 
 // Campaigns
