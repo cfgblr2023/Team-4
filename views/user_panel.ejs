@@ -1,0 +1,29 @@
+<h1 class="mt-4" style="color: teal;">Welcome to User Panel</h1>
+<p class="lead mb-3">Welcome <%= user.name %> <%= user.email %></p>
+<a href="/users/logout" class="btn btn-secondary" style="background-color: teal;">Logout</a>
+
+<div class="row mt-5">
+  <% if (allItems.length > 0) { %>
+    <% allItems.forEach(function(row) { %>
+      <div class="col-md-6 mb-4">
+        <div class="card" style="background-color: teal; color: white;">
+          <div class="card-body">
+            <h5 class="card-title"><%= row.name %></h5>
+            <p class="card-text">Price: <%= row.price %></p>
+            <p class="card-text">Quantity Available: <%= row.reqStock %></p>
+            <img src="<%= row.imgUrl %>" class="card-img-top" alt="<%= row.name %>">
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <div class="col-md-12">
+      <div class="card" style="background-color: teal; color: white;">
+        <div class="card-body">
+          <p class="card-text">No Record Found</p>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>
