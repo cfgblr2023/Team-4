@@ -8,16 +8,6 @@ const upload=require('../utils/multer');
 const Content = require('../models/Content')
 // Dashboard
 
-router.get('/create', (req, res) => {
-    const content = new Content({ title:"abc", subject: "def", cyear:"10", cbody:"uiqdw"});
-    content.save()
-    .then(()=> {
-        console.log('posted');
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-})
 
 router.post('/create', (req, res) => {
     const content = new Content({ title:"abc", subject: "def", cyear:"10", cbody:"uiqdw"});
