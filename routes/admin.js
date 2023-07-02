@@ -5,10 +5,29 @@ const adminController = require('../controllers/adminController')
 const Item = require('../models/Item');
 const Campaign = require('../models/Campaign');
 const upload=require('../utils/multer');
+const Content = require('../models/Content')
 // Dashboard
 
+
+router.post('/create', (req, res) => {
+    const content = new Content({ title:"abc", subject: "def", cyear:"10", cbody:"uiqdw"});
+    content.save()
+    .then(()=> {
+        console.log('posted');
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+})
+
 router.get('/dashboard', (req, resp) => {
-    resp.render('admin/dashboard');
+    Content.find()
+    .then(result => {
+      resp.render('./admindashboard', { content: result});
+    })
+    .catch(err => {
+      console.log(err);
+    });
 })
 
 // All Users
